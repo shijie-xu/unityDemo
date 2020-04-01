@@ -59,6 +59,29 @@ public class HexGrid : MonoBehaviour {
         cell.transform.localPosition = position;
         cell.coordinates = HexCoordinates.FromOffsetCoordinates(x, z);
         cell.color = defaultColor;
+        if (x > 0)
+        {
+            cell.SetNeighbor(HexDirection.W, cells[i - 1]);
+        }
+        if (z > 0)
+        {
+            if ((z & 1) == 0)
+            {
+                cell.SetNeighbor(HexDirection.SE, cells[i - width]);
+                if (x > 0)
+                {
+                    cell.SetNeighbor(HexDirection.SW, cells[i - width - 1]);
+                }
+            }
+            else
+            {
+                cell.SetNeighbor(HexDirection.SW, cells[i - width]);
+                if (x < width - 1)
+                {
+                    cell.SetNeighbor(HexDirection.SE, cells[i - width + 1]);
+                }
+            }
+        }
 
         Text label = Instantiate<Text>(cellLabelPrefab);
         label.rectTransform.SetParent(gridCanvas.transform, false);
@@ -74,38 +97,9 @@ public class HexGrid : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        /*
-		if (Input.GetMouseButton(0) &&
-            !EventSystem.current.IsPointerOverGameObject())
-        {
-            HandleInput();
-        }
-        */
+
 	}
 
-    void HandleInput()
-    {
-        /*
-        Ray inputRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-        if(Physics.Raycast(inputRay, out hit))
-        {
-            TouchCell(hit.point, );
-        }
-        */
-    }
-    /*
-    void TouchedCell(Vector3 position)
-    {
-        position = transform.InverseTransformPoint(position);
-        HexCoordinates coordinates = HexCoordinates.FromPosition(position);
-        Debug.Log("touch at " + coordinates.ToString());
-        int index = coordinates.X + coordinates.Z * width + coordinates.Z / 2;
-        HexCell cell = cells[index];
-        cell.color = touchedColor;
-        hexMesh.Triangulate(cells);
-    }
-    */
 
     public void ColorCell(Vector3 position, Color color)
     {
