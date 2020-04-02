@@ -42,39 +42,27 @@ public class HexCell : MonoBehaviour {
             elevation = value;
             Vector3 position = transform.localPosition;
             position.y = value * HexMetrics.elevationStep;
+            position.y +=
+                (HexMetrics.SampleNoise(position).y * 2f - 1f) *
+                HexMetrics.elevationPerturbStrength;
+
             transform.localPosition = position;
 
             Vector3 uiPosition = uiRect.localPosition;
-            uiPosition.z = elevation * -HexMetrics.elevationStep;
+            //uiPosition.z = elevation * -HexMetrics.elevationStep;
+            uiPosition.z = -position.y;
             uiRect.localPosition = uiPosition;
-        }
-    }
-
-    public static class HexMetrics
-    {
-        public const float outerRadius = 10f;
-        public const float innerRadius = outerRadius * 0.866025404f;
-        public const float solidFactor = 0.75f;
-        public const float blendFactor = 1f - solidFactor;
-
-        public const float elevationStep = 5f;
-
-        public static HexEdgeType GetEdgeType(int elev1, int elev2)
-        {
-            if(elev1 == elev2)
-            {
-                return HexEdgeType.Flat;
-            }
-            int delta = elev2 - elev1;
-            if (delta == 1 || delta == -1)
-            {
-                return HexEdgeType.Slope;
-            }
-            return HexEdgeType.Cliff;
         }
     }
     public int elevation;
     public RectTransform uiRect;
+    public Vector3 Position
+    {
+        get
+        {
+            return transform.localPosition;
+        }
+    }
 
     [SerializeField]
     HexCell[] neighbors;

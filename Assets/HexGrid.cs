@@ -17,24 +17,17 @@ public class HexGrid : MonoBehaviour {
     HexMesh hexMesh;
 
     public Color defaultColor = Color.white;
-    //public Color touchedColor = Color.magenta;
 
-    public static class HexMetrics
+    public Texture2D noiseSource;
+
+    private void OnEnable()
     {
-        public const float outerRadius = 10f;
-        public const float innerRadius = outerRadius * 0.866025404f;
-        public static Vector3[] corners = {
-            new Vector3(0f, 0f, outerRadius),
-            new Vector3(innerRadius, 0f, 0.5f * outerRadius),
-            new Vector3(innerRadius, 0f, -0.5f * outerRadius),
-            new Vector3(0f, 0f, -outerRadius),
-            new Vector3(-innerRadius, 0f, -0.5f * outerRadius),
-            new Vector3(-innerRadius, 0f, 0.5f * outerRadius)
-        };
+        HexMetrics.noiseSourse = noiseSource;
     }
 
     private void Awake()
     {
+        HexMetrics.noiseSourse = noiseSource;
         gridCanvas = GetComponentInChildren<Canvas>();
         hexMesh = GetComponentInChildren<HexMesh>();
         cells = new HexCell[height * width];
@@ -90,6 +83,7 @@ public class HexGrid : MonoBehaviour {
         label.text = cell.coordinates.ToStringOnSeparateLines();
 
         cell.uiRect = label.rectTransform;
+        cell.Elevation = 0;
     }
 
     // Use this for initialization
