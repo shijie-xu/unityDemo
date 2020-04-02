@@ -29,7 +29,7 @@ public static class HexDirectionExtensions
 
 public class HexCell : MonoBehaviour {
     public HexCoordinates coordinates;
-    public Color color;
+    public HexGridChunk chunk;
 
     public int Elevation
     {
@@ -39,6 +39,10 @@ public class HexCell : MonoBehaviour {
         }
         set
         {
+            if (elevation == value)
+            {
+                return;
+            }
             elevation = value;
             Vector3 position = transform.localPosition;
             position.y = value * HexMetrics.elevationStep;
@@ -52,9 +56,11 @@ public class HexCell : MonoBehaviour {
             //uiPosition.z = elevation * -HexMetrics.elevationStep;
             uiPosition.z = -position.y;
             uiRect.localPosition = uiPosition;
+
+            Refresh();
         }
     }
-    public int elevation;
+    public int elevation = int.MinValue;
     public RectTransform uiRect;
     public Vector3 Position
     {
@@ -66,6 +72,24 @@ public class HexCell : MonoBehaviour {
 
     [SerializeField]
     HexCell[] neighbors;
+
+    public Color Color
+    {
+        get
+        {
+            return color;
+        }
+        set
+        {
+            if (color == value)
+            {
+                return;
+            }
+            color = value;
+            Refresh();
+        }
+    }
+    Color color;
 
     // Use this for initialization
     void Start () {
@@ -98,5 +122,21 @@ public class HexCell : MonoBehaviour {
     {
         return HexMetrics.GetEdgeType(
             elevation, othercell.elevation);
+    }
+
+    void Refresh()
+    {
+        if (chunk)
+        {
+            chunk.Refresh();
+            for(int i = 0; i < neighbors.Length; i++)
+            {
+                HexCell neighbor = neighbors[i];
+                if (neighbor != null && neighbor.chunk != chunk)
+                {
+                    neighbor.chunk.Refresh();
+                }
+            }
+        }
     }
 }

@@ -61,10 +61,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\CameraMove.cs" />
     <Compile Include="Assets\HexCell.cs" />
     <Compile Include="Assets\HexCoordinates.cs" />
     <Compile Include="Assets\HexGrid.cs" />
+    <Compile Include="Assets\HexGridChunk.cs" />
+    <Compile Include="Assets\HexMapCamera.cs" />
     <Compile Include="Assets\HexMapEditor.cs" />
     <Compile Include="Assets\HexMesh.cs" />
     <Compile Include="Assets\HexMetrics.cs" />

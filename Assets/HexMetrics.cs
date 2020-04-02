@@ -92,4 +92,6 @@ public static class HexMetrics
     public const float cellPerturbStrength = 4f;
     public const float noiseScale = 0.003f;
     public const float elevationPerturbStrength = 1.5f;
+
+    public const int chunkSizeX = 5, chunkSizeZ = 5;
 }
