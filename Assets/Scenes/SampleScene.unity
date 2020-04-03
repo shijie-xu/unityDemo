@@ -1732,7 +1732,7 @@ MonoBehaviour:
     type: 2}
   defaultColor: {r: 1, g: 1, b: 1, a: 1}
   noiseSource: {fileID: 2800000, guid: fe0e0020472e9fc4387be03f1ff19e0f, type: 3}
-  chunkPrefab: {fileID: 114342238549118186, guid: cbc3b896e524b9a40b362866f18bcaaf,
+  chunkPrefab: {fileID: 114998953437576136, guid: cbc3b896e524b9a40b362866f18bcaaf,
     type: 2}
 --- !u!4 &936278865
 Transform:

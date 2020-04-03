@@ -170,14 +170,4 @@ public class HexGrid : MonoBehaviour {
             chunks[i].ShowUI(visible);
         }
     }
-    //public void ColorCell(Vector3 position, Color color)
-    //{
-    //    position = transform.InverseTransformPoint(position);
-    //    HexCoordinates coordinates = HexCoordinates.FromPosition(position);
-    //    Debug.Log("touch at " + coordinates.ToString());
-    //    int index = coordinates.X + coordinates.Z * cellCountX + coordinates.Z / 2;
-    //    HexCell cell = cells[index];
-    //    cell.color = color;
-    //    hexMesh.Triangulate(cells);
-    //}
 }
