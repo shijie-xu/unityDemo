@@ -8,9 +8,11 @@ public class HexMapEditor : MonoBehaviour {
     public HexGrid hexGrid;
     private Color activeColor;
     int activeElevation;
+    int activeWaterLevel;
 
     bool applyColor;
     bool applyElevation = true;
+    bool applyWaterLevel = true;
 
     int brushSize;
 
@@ -103,7 +105,10 @@ public class HexMapEditor : MonoBehaviour {
             {
                 cell.Elevation = activeElevation;
             }
-            //Debug.Log("Edit Cell: isDrag=" + isDrag.ToString() + ", Toggle Mode=" + riverMode.ToString());
+            if (applyWaterLevel)
+            {
+                cell.WaterLevel = activeWaterLevel;
+            }
             if (riverMode == OptionalToggle.No)
             {
                 cell.RemoveRiver();
@@ -190,5 +195,16 @@ public class HexMapEditor : MonoBehaviour {
             }
             isDrag = false;
         }
+    }
+
+    public void SetApplyWaterLevel(bool toggle)
+    {
+        applyWaterLevel = toggle;
+    }
+
+    public void SetWaterLevel(float level)
+    {
+        //Debug.Log("Set water level:" + level.ToString());
+        activeWaterLevel = (int)level;
     }
 }

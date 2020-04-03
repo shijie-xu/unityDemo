@@ -114,6 +114,6 @@ public static class HexMetrics
         return position;
     }
 
-    public const float riverSurfaceElevationOffset = -0.5f;
-
+    //public const float riverSurfaceElevationOffset = -0.5f;
+    public const float waterElevationOffset = -0.5f;
 }

@@ -73,6 +73,7 @@
     <None Include="Assets\VertexColors.shader" />
     <None Include="Assets\Road.shader" />
     <None Include="Assets\River.shader" />
+    <None Include="Assets\Water.shader" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Users/Shijie/Documents/New Unity Project (4)/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
