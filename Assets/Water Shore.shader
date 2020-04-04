@@ -44,6 +44,7 @@
 				//float foam = max(foam1, foam2) * shore;
 				//foam *= foam * shore;
 				float shore = IN.uv_MainTex.y;
+				shore = sqrt(shore)*0.9;
 				float foam = Foam(shore, IN.worldPos.xz, _MainTex);
 				float waves = Waves(IN.worldPos.xz, _MainTex);
 				waves *= 1 - shore;

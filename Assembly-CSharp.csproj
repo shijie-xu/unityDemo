@@ -72,6 +72,7 @@
     <Compile Include="Assets\Label.cs" />
     <None Include="Assets\VertexColors.shader" />
     <None Include="Assets\Water.cginc" />
+    <None Include="Assets\Estuaries.shader" />
     <None Include="Assets\Water Shore.shader" />
     <None Include="Assets\Road.shader" />
     <None Include="Assets\River.shader" />

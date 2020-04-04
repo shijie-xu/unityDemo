@@ -2609,7 +2609,7 @@ MonoBehaviour:
     type: 2}
   defaultColor: {r: 1, g: 1, b: 1, a: 1}
   noiseSource: {fileID: 2800000, guid: fe0e0020472e9fc4387be03f1ff19e0f, type: 3}
-  chunkPrefab: {fileID: 114543006878398176, guid: cbc3b896e524b9a40b362866f18bcaaf,
+  chunkPrefab: {fileID: 114370901816015636, guid: cbc3b896e524b9a40b362866f18bcaaf,
     type: 2}
 --- !u!4 &936278865
 Transform:
@@ -5880,7 +5880,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1588413457}
         m_MethodName: SetWaterLevel
-        m_Mode: 4
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
